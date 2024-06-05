@@ -72,6 +72,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "drf_project.wsgi.application"
 
+#  disable the Browsable API in production
+if not DEBUG:
+    REST_FRAMEWORK = {
+        "DEFAULT_RENDERER_CLASSES": (
+            "rest_framework.renderers.JSONRenderer",
+        )
+    }
+
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
